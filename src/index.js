@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from './pages/HomePage';
+import { BlogPost } from './pages/BlogPost';
+import { NotFound } from './pages/NotFound';
+import { NewPost } from './pages/NewPost';
+import { SearchResults } from './pages/SearchResults';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,10 +15,12 @@ root.render(
     <BrowserRouter>
       <Routes>
           <Route exact path="/" element={ <HomePage /> } />
-          <Route path="/blog">
+          <Route path="/blogs">
               <Route index element={ <BlogPost /> } />
               <Route path=":id" element={ <BlogPost /> } />
           </Route>
+          <Route path="/search" element={ <SearchResults /> } />
+          <Route path="/newpost" element={ <NewPost /> } />
           <Route path="/error" element={ <NotFound /> } />
           <Route path="*" element={ <NotFound /> } />
       </Routes>

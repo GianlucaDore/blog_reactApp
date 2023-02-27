@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AddBlog } from "../components/AddBlog";
 import { BlogList } from "../components/BlogList";
 import { SearchBar } from "../components/SearchBar";
@@ -10,46 +11,53 @@ export const HomePage = () =>
 {
     const [blogList, setBlogList] = useState([]);
 
-    useEffect(async () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
         // API call to restdb.io to retrieve the stored blog list.
 
-        const response = await fetch('https://reactblogapp-52d2.restdb.io/rest/excel-blog', {
-            "method" : 'GET',
-            "headers" : {
-                            'Cache-Control' : "no-cache",
-                            'x-apikey': 'a9dfb57175ae596aeb32c3990ca5f68a972c5'
-                        }
-        });
-
-        if (!response.ok)
+        const fetchData = async () => 
         {
-            console.log("Database call response not okay!");
-            navigate("/notfound");
-        }
+            const response = await fetch('https://reactblogapp-52d2.restdb.io/rest/excel-blog', {
+                "method" : 'GET',
+                "headers" : {
+                                'Cache-Control' : "no-cache",
+                                'x-apikey': '63d53b073bc6b255ed0c43c2'
+                            }
+            });
 
-        else
-        {
-            const res = await response.json();
-
-            let retrievedList = [];
-            let obj={
-                "title" : null,
-                "content" : null,
-                "tags" : []
-            };
-
-            for (let o in res)
+            if (!response.ok)
             {
-                obj.title = o.title;
-                obj.content = o.content;
-                obj.tags = o.tags.split(" ");
-
-                retrievedList.push(obj);
+                console.log("Database call response not okay!");
+                navigate("/notfound");
             }
 
-            setBlogList(retrievedList);
+            else
+            {
+                const res = await response.json();
+
+                const retrievedList = [];
+                /*  let obj={
+                    "title" : null,
+                    "content" : null,
+                    "tags" : []
+                }; */
+
+                for (const o of res)
+                {
+                    /*
+                    obj.title = o.title;
+                    obj.content = o.content;
+                    obj.tags = o.tags.split(" ");
+                    */
+                    retrievedList.push(o);
+                }
+
+                setBlogList(retrievedList);
+            }
         }
 
+        fetchData().catch((error) => (console.log("There was an error: " + error)));
     }, []);
     
 
@@ -58,7 +66,7 @@ export const HomePage = () =>
             <Header />
             <SearchBar />
             <AddBlog />
-            <BlogList list={blogList} />
+            <BlogList blogList={blogList} />
             <Footer />
         </div>
     );
