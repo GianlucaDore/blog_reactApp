@@ -3,6 +3,7 @@ import { Footer } from "../components/Footer";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../css/NewPost.css';
+import { NavBar } from "../components/NavBar";
 
 export const NewPost = () =>
 {
@@ -63,6 +64,7 @@ export const NewPost = () =>
         // Then, we shall render a confirmation message telling the user the form was sent to the DB with a "close" button to let him go back to the posts array homepage.
 
         <div id="new_post">
+            <NavBar />
             {confirmation}
             <h1 id="new_post_header">New blog post</h1>
             <form onSubmit={(e) => { const ret = validateAndSend(e) ; if (ret instanceof FormData) { console.log("ret ="+ret); setFormData(ret); setNewPost(true); } return; }}>

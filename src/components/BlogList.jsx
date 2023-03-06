@@ -12,7 +12,11 @@ export const BlogList = (props) =>
             return (<BlogItemPreview title={o.title} author={o.author} key={o.title} />);
         } );
 
-        return blogItems;
+        return (
+            <div id="blog_item_container">
+                { blogItems }
+            </div>
+        );
     }
    
 }

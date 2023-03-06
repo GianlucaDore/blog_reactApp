@@ -1,0 +1,10 @@
+.stay_fixed
+{
+    position: fixed;
+    width: 100%;
+}
+
+.stay_sticky
+{
+    position: sticky;
+}

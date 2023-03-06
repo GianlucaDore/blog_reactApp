@@ -1,0 +1,37 @@
+#home_page
+{
+    text-align: center;
+}
+
+#home_page_blog_list
+{
+    flex: content;
+    flex-direction: column;
+}
+
+#blog_item_container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 5%;
+    column-gap: 3%;
+}
+
+/* #add_blog
+{
+    background-color: aqua;
+} */
+
+#plus_button
+{
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#plus_icon
+{
+    margin-top: 2%;
+    max-width: 10%;
+}

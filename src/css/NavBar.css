@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap'); /* import Caveat font from GoogleFonts */
+
+nav
+{
+    width: 100%;
+    background-color: navy;
+}
+
+a
+{
+    text-align: left;
+    font-family: 'Caveat', cursive;
+    color: white;
+    text-decoration: none;
+}
+

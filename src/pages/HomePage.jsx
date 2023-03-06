@@ -6,10 +6,14 @@ import { BlogList } from "../components/BlogList";
 import { SearchBar } from "../components/SearchBar";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { NavBar } from '../components/NavBar';
+import '../css/HomePage.css';
+import { ClipLoader } from 'react-spinners';
 
 export const HomePage = () =>
 {
     const [blogList, setBlogList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
@@ -54,20 +58,28 @@ export const HomePage = () =>
                 }
 
                 setBlogList(retrievedList);
+
+                setLoading(false);
             }
         }
 
         fetchData().catch((error) => (console.log("There was an error: " + error)));
+
     }, []);
     
 
     return (
         <div id="home_page">
+            <NavBar />
             <Header />
             <SearchBar />
             <AddBlog />
-            <BlogList blogList={blogList} />
-            <Footer />
+            <div id="home_page_blog_list">
+                <h2>Recent submitted posts:</h2>
+                <ClipLoader color={"navy"} loading={loading} size={150} />
+                <BlogList blogList={blogList} />
+            </div>
+            <Footer position="stay_fixed"/>
         </div>
     );
 

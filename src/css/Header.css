@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap'); /* import Caveat font from GoogleFonts */
+
+#homepage_header_container
+{
+    display: flex;
+    flex: content;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5%;
+}
+
+#header_welcome
+{
+    color: navy;
+}
+
+#header_title
+{
+    color: navy;
+    font-family: 'Caveat', cursive;
+}
+
