@@ -1,4 +1,4 @@
-#new_post_page
+#new_post
 {
     text-align: center;
 }
@@ -8,5 +8,26 @@
     color: navy;
 }
 
+#form_container
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_item
+{
+    width: 20%;
+}
+
+#form_textarea
+{
+    flex-grow: 4;
+    resize: none;
+    width: 100vh;
+    height: 60vh;
+}
 
 

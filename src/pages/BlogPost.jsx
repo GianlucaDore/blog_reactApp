@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
+import "../css/BlogPost.css";
 
 export const BlogPost = () =>
 {
@@ -57,13 +58,13 @@ export const BlogPost = () =>
        since the API call is not supposed to be called when the state changes, but on user-action (event).    
        So, we'll handle the deletion directly in the even handler. */
     return(
-        <div>
+        <div id="blogpost">
             <NavBar />
             {!!isLoading ? (<ClipLoader color={"navy"} loading={isLoading} size={150} /> ) : null}
-            {!!blogData.title ? <h1>{blogData.title}</h1> : null}
-            {!!blogData.content ? <p>{blogData.content}</p> : null}
-            {!!blogData.tags ? <h5>{blogData.tags}</h5> : null}
-            {!!isLoading ? null : (<button onClick={() => {const ret = handleDeletion(blogData); if (ret === 404) {navigate("/notfound")} else {navigate("/")}} }>Delete this post</button>)}
+            {!!blogData.title ? <h1 id="blog_post_title">{blogData.title}</h1> : null}
+            {!!blogData.content ? <p id="blog_post_content">{blogData.content}</p> : null}
+            {!!blogData.tags ? <h5 id="blog_post_tags">{blogData.tags}</h5> : null}
+            {!!isLoading ? null : (<button id="delete_blog_post" onClick={() => {const ret = handleDeletion(blogData); if (ret === 404) {navigate("/notfound")} else {navigate("/")}} }>Delete this post</button>)}
             <Footer position="stay_sticky"/>
         </div>
         

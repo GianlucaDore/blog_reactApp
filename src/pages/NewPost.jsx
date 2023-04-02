@@ -67,11 +67,11 @@ export const NewPost = () =>
             <NavBar />
             {confirmation}
             <h1 id="new_post_header">New blog post</h1>
-            <form onSubmit={(e) => { const ret = validateAndSend(e) ; if (ret instanceof FormData) { console.log("ret ="+ret); setFormData(ret); setNewPost(true); } return; }}>
-                <input value={author} name="author" placeholder= "Author" onChange={e => setAuthor(e.target.value)} />
-                <input value={title} name="title" placeholder="Title"  onChange={e => setTitle(e.target.value)} />
-                <textarea value={post} name="content" type="text" placeholder="Your blog post" onChange={e => setPost(e.target.value)} />
-                <input value={tags} name="tags" placeholder="Tags" onChange={e => setTags(e.target.value)} />
+            <form id="form_container" onSubmit={(e) => { const ret = validateAndSend(e) ; if (ret instanceof FormData) { console.log("ret ="+ret); setFormData(ret); setNewPost(true); } return; }}>
+                <input className="form_item" value={author} name="author" placeholder= "Author" onChange={e => setAuthor(e.target.value)} />
+                <input className="form_item" value={title} name="title" placeholder="Title"  onChange={e => setTitle(e.target.value)} />
+                <textarea id="form_textarea" className="form_item" value={post} name="content" type="text" placeholder="Type your post here..." onChange={e => setPost(e.target.value)} />
+                <input className="form_item" value={tags} name="tags" placeholder="Tags" onChange={e => setTags(e.target.value)} />
                 <button type="submit">Submit post</button>
             </form>
             <Footer />

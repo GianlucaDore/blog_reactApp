@@ -8,6 +8,7 @@ import { BlogPost } from './pages/BlogPost';
 import { NotFound } from './pages/NotFound';
 import { NewPost } from './pages/NewPost';
 import { SearchResults } from './pages/SearchResults';
+import { Login } from './pages/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           </Route>
           <Route path="/search" element={ <SearchResults /> } />
           <Route path="/newpost" element={ <NewPost /> } />
+          <Route path="/login" element={ <Login /> } />
           <Route path="/error" element={ <NotFound /> } />
           <Route path="*" element={ <NotFound /> } />
       </Routes>
