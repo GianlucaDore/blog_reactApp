@@ -9,75 +9,37 @@ import { Footer } from "../components/Footer";
 import { NavBar } from '../components/NavBar';
 import '../css/HomePage.css';
 import { ClipLoader } from 'react-spinners';
+import { fetchAsyncPosts, getAllPosts, getLogInStatus, getSpinnerStatus, turnOnSpinner } from '../redux/blogSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const HomePage = () =>
 {
-    const [blogList, setBlogList] = useState([]);
-    const [loading, setLoading] = useState(true);
 
-    const navigate = useNavigate();
+    const postsCollectionData = useSelector(getAllPosts); // Redux store subscription for the post collection.
+    const userIsLoggedIn = useSelector(getLogInStatus); // Redux store subscription to know if an admin is authenticated or not.
+    const isLoading = useSelector(getSpinnerStatus); // Redux store subscription to know if the component is loading/fetching data, to know when to display a spinner.
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        // API call to restdb.io to retrieve the stored blog list.
 
-        const fetchData = async () => 
-        {
-            const response = await fetch('https://reactblogapp-52d2.restdb.io/rest/excel-blog', {
-                "method" : 'GET',
-                "headers" : {
-                                'Cache-Control' : "no-cache",
-                                'x-apikey': '63d53b073bc6b255ed0c43c2'
-                            }
-            });
+        dispatch(turnOnSpinner()); // Component gets rendered: turn on the spinner, we're about to fetch the data still, and component's not ready to display the collection.
 
-            if (!response.ok)
-            {
-                console.log("Database call response not okay!");
-                navigate("/notfound");
-            }
+        dispatch(fetchAsyncPosts()); // Dispatch the async thunk to retrieve the blog posts collection.
 
-            else
-            {
-                const res = await response.json();
-
-                const retrievedList = [];
-                /*  let obj={
-                    "title" : null,
-                    "content" : null,
-                    "tags" : []
-                }; */
-
-                for (const o of res)
-                {
-                    /*
-                    obj.title = o.title;
-                    obj.content = o.content;
-                    obj.tags = o.tags.split(" ");
-                    */
-                    retrievedList.push(o);
-                }
-
-                setBlogList(retrievedList);
-
-                setLoading(false);
-            }
-        }
-
-        fetchData().catch((error) => (console.log("There was an error: " + error)));
-
-    }, []);
+    }, []); 
     
 
-    return (
+    return (   // Only if an admin is logged in, then we display the button to write a new blog post. 
         <div id="home_page">
             <NavBar />
             <Header />
             <SearchBar />
-            <AddBlog />
+            {!!userIsLoggedIn ? (<AddBlog />) : null}
             <div id="home_page_blog_list">
                 <h2>Recent submitted posts:</h2>
-                <ClipLoader color={"navy"} loading={loading} size={150} />
-                <BlogList blogList={blogList} />
+                <ClipLoader color={"navy"} loading={isLoading} size={150} />
+                <BlogList blogList={postsCollectionData} />
             </div>
             <Footer position="stay_fixed"/>
         </div>

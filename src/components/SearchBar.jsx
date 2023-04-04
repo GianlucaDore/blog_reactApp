@@ -5,7 +5,7 @@ export const SearchBar = () =>
 {
     const navigate = useNavigate();
 
-    const [searchparams, setSearchparams] = useState(null);
+    const [searchparams, setSearchparams] = useState("");
 
     return (
         <div id="search_form">

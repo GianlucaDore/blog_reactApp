@@ -9,24 +9,29 @@ import { NotFound } from './pages/NotFound';
 import { NewPost } from './pages/NewPost';
 import { SearchResults } from './pages/SearchResults';
 import { Login } from './pages/Login';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-          <Route exact path="/" element={ <HomePage /> } />
-          <Route path="/blogs">
-              <Route index element={ <BlogPost /> } />
-              <Route path=":id" element={ <BlogPost /> } />
-          </Route>
-          <Route path="/search" element={ <SearchResults /> } />
-          <Route path="/newpost" element={ <NewPost /> } />
-          <Route path="/login" element={ <Login /> } />
-          <Route path="/error" element={ <NotFound /> } />
-          <Route path="*" element={ <NotFound /> } />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+            <Route exact path="/" element={ <HomePage /> } />
+            <Route path="/blogs">
+                <Route index element={ <BlogPost /> } />
+                <Route path=":id" element={ <BlogPost /> } />
+            </Route>
+            <Route path="/search" element={ <SearchResults /> } />
+            <Route path="/newpost" element={ <NewPost /> } />
+            <Route path="/login" element={ <Login /> } />
+            <Route path="/error" element={ <NotFound /> } />
+            <Route path="*" element={ <NotFound /> } />
+        </Routes>
+      </BrowserRouter>
+    </Provider> 
+    
   </React.StrictMode>
 );
 

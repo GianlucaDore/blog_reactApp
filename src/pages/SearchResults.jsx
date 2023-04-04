@@ -5,51 +5,28 @@ import { BlogList } from "../components/BlogList";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
+import { getPostsMatchingSearch, getSpinnerStatus, searchAsyncPosts, turnOnSpinner } from "../redux/blogSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const SearchResults = () =>
 {
 
-    const [searchResults, setSearchResults] = useState([]); // Initialization of state, in order to display "entries: 0" in case the search fails.
-    const [isLoading, setIsLoading] = useState(true);
-
     const [searchParams, setSearchParams] = useSearchParams();  // Returns the current URL's search params and a function to update the query string in the URL.
+
+    const searchResults = useSelector(getPostsMatchingSearch); // Redux store subscription to retrieve the posts searched for in the query string.
+    const isLoading = useSelector(getSpinnerStatus); // Redux store subscription to know if the component is loading/fetching data, to know when to display a spinner.
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
-        async function searchQuery()
-        {
-            const q = searchParams.get('q');
+        dispatch(turnOnSpinner());  // Turn on the spinner.
 
-            const str = "https://reactblogapp-52d2.restdb.io/rest/excel-blog?q={\"$or\":[{\"title\":{\"$in\":\"" + q + "\"}},{\"tags\":{\"$in\":\"" + q + "\"}}]}";
+        const q = searchParams.get('q');  // Words to search are written in the URL search query.
 
-            console.log(str);
-            // const str = "https://reactblogapp-52d2.restdb.io/rest/excel-blog?q={\"$or\":[{\"title\":{\"$in\":\"LOREM IPSUM\"}},{\"title\":{\"$in\":\"far\"}}]}";
-            const response = await fetch(str, 
-            {
-                "headers" : 
-                {
-                    'Cache-Control' : "no-cache",
-                    'x-apikey': '63d53b073bc6b255ed0c43c2',
-                    'content-type': 'application/json'
-                }
-            });
+        dispatch(searchAsyncPosts(q)); // Dispatch the async action that asks restdb.io if there are any matching results.
 
-            if (!response.ok)
-            {
-                console.log("ERROR: response not ok!");
-                return;
-            }
-
-            const res = await response.json();
-
-            setSearchResults(res);
-
-            setIsLoading(false);
-
-            console.log("Done updating state");
-        }
-
-        searchQuery().catch((error) => console.log("There was an error: " + error));
+        // CAN WE DO CLEANUP ?
 
     }, []);  // useEffect triggers only when the SearchResults component is mounted.
 
