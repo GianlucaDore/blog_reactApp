@@ -1,17 +1,27 @@
-import React, { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import '../css/Login.css';
-import { loginAsyncVerification } from "../redux/blogSlice";
-import { useDispatch } from "react-redux";
+import { loginAsyncVerification, getLogInStatus } from "../redux/blogSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Login = () =>
 {
     const [user, setUser] = useState(""); // CONTROLLED form by the state.
     const [password, setPassword] = useState("");  // CONTROLLED form by the state.
 
+    const userIsLoggedIn = useSelector(getLogInStatus);
+
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() =>
+    {
+        if (userIsLoggedIn === true)
+            navigate("/");
+    }, [userIsLoggedIn, navigate]); // Automatic redirect to homepage when user logs in.
 
     return (
         <div id="login">

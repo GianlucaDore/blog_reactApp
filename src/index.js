@@ -11,6 +11,7 @@ import { SearchResults } from './pages/SearchResults';
 import { Login } from './pages/Login';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { Profile } from './pages/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
             <Route path="/login" element={ <Login /> } />
             <Route path="/error" element={ <NotFound /> } />
             <Route path="*" element={ <NotFound /> } />
+            <Route path="/profile" element={ <Profile /> } />
         </Routes>
       </BrowserRouter>
     </Provider> 

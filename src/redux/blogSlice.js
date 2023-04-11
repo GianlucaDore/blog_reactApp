@@ -124,6 +124,7 @@ const initialState =
     postsMatchingSearch: [],
     selectedPostToDisplay: {},
     loggedInAsAdmin: false,
+    logInUsername: "",
     isLoading: false
 }
 
@@ -136,6 +137,10 @@ export const blogSlice = createSlice({
         },
         turnOffSpinner: (state) => {
             state.isLoading = false;
+        },
+        logOutUser: (state) => {
+            state.logInUsername = "";
+            state.loggedInAsAdmin = false;
         }
     },
     extraReducers: {
@@ -189,7 +194,7 @@ export const blogSlice = createSlice({
             if (res.payload.length === 1)  // The response to the query is an array of objects in the DB that matched the query.
             {
                 console.log("Log In was successful!");
-                return({...state, loggedInAsAdmin : true})
+                return({...state, loggedInAsAdmin : true, logInUsername: res.payload[0].username})
             }        
             else
             {
@@ -207,7 +212,8 @@ export const getPostsMatchingSearch = (state) => state.blog.postsMatchingSearch;
 export const getPostToDisplay = (state) => state.blog.selectedPostToDisplay;
 export const getLogInStatus = (state) => state.blog.loggedInAsAdmin;
 export const getSpinnerStatus = (state) => state.blog.isLoading;
+export const getLogInUsername = (state) => state.blog.logInUsername;
 
 // Finalizing actions and reducers.
-export const { turnOffSpinner, turnOnSpinner} = blogSlice.actions;
+export const { turnOffSpinner, turnOnSpinner, logOutUser} = blogSlice.actions;
 export default blogSlice.reducer;
