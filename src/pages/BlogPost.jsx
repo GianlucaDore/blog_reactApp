@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
 import "../css/BlogPost.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogInStatus, getPostToDisplay, retrieveAsyncPost, getSpinnerStatus } from "../redux/blogSlice";
+import { getLogInStatus, getPostToDisplay, retrieveAsyncPost, getSpinnerStatus, removeBlogPostDetails } from "../redux/blogSlice";
 
 export const BlogPost = () =>
 {
@@ -26,7 +26,10 @@ export const BlogPost = () =>
 
         dispatch(retrieveAsyncPost(urlParams.id));  // Dispatch the async action to retrieve the requested post's details.
 
-        /* CLEANUP IS NEEDED !!!! */
+        return () =>
+        {
+            dispatch(removeBlogPostDetails());
+        }
 
     }, []);
 

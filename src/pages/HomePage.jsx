@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AddBlog } from "../components/AddBlog";
 import { BlogList } from "../components/BlogList";
 import { SearchBar } from "../components/SearchBar";
@@ -9,7 +8,7 @@ import { Footer } from "../components/Footer";
 import { NavBar } from '../components/NavBar';
 import '../css/HomePage.css';
 import { ClipLoader } from 'react-spinners';
-import { fetchAsyncPosts, getAllPosts, getLogInStatus, getSpinnerStatus, turnOnSpinner } from '../redux/blogSlice';
+import { fetchAsyncPosts, getAllPosts, getLogInStatus, getSpinnerStatus, turnOnSpinner, removeBlogListPosts } from '../redux/blogSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const HomePage = () =>
@@ -27,6 +26,11 @@ export const HomePage = () =>
 
         dispatch(fetchAsyncPosts()); // Dispatch the async thunk to retrieve the blog posts collection.
 
+        return () =>
+        {
+            dispatch(removeBlogListPosts());
+        }
+
     }, []); 
     
 
@@ -37,7 +41,7 @@ export const HomePage = () =>
             <SearchBar />
             {!!userIsLoggedIn ? (<AddBlog />) : null}
             <div id="home_page_blog_list">
-                <h2>Recent submitted posts:</h2>
+                <h2 className='recent_submitted_posts'>Recent submitted posts:</h2>
                 <ClipLoader color={"navy"} loading={isLoading} size={150} />
                 <BlogList blogList={postsCollectionData} />
             </div>

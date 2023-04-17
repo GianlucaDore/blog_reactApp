@@ -1,6 +1,29 @@
 #login_container
 {
+    width: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 2%;
+}
+
+#login_container > h6
+{
+    height: 1px;
+}
+
+#login_container button
+{
+    background-color: navy;
+    color: white;
+    border-style: double;
+    border-color: navy;
+}
+
+#login_container button:hover
+{
+    background-color: rgb(38, 44, 117);
+    color: white;
+    border-style: double;
+    border-color: navy;
 }

@@ -10,14 +10,18 @@
     flex-wrap: wrap;
 }
 
+.recent_submitted_posts
+{
+    margin-top: 3.1%;
+}
+
 #blog_item_container
 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    row-gap: 5%;
-    column-gap: 3%;
+    gap: 3%;
 }
 
 /* #add_blog
@@ -35,4 +39,33 @@
 {
     margin-top: 2%;
     max-width: 10%;
+}
+
+.blog_item_preview
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.blog_item_preview > button  /* Rules for the buttons that are direct descendants of the div with given className */
+{
+    width: 150px;
+    background-color: whitesmoke;
+    border: double;
+    border-radius: 6%;
+    border-color: navy;
+    color: darkblue;
+}
+
+.blog_item_preview > button:hover
+{
+    width: 150px;
+    background-color: navy;
+    border: double;
+    border-radius: 6%;
+    border-color: white;
+    color: white;
 }

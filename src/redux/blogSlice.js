@@ -141,6 +141,12 @@ export const blogSlice = createSlice({
         logOutUser: (state) => {
             state.logInUsername = "";
             state.loggedInAsAdmin = false;
+        },
+        removeBlogPostDetails: (state) => {
+            state.selectedPostToDisplay = {};
+        },
+        removeBlogListPosts: (state) => {
+            state.postsCollection = [];
         }
     },
     extraReducers: {
@@ -215,5 +221,5 @@ export const getSpinnerStatus = (state) => state.blog.isLoading;
 export const getLogInUsername = (state) => state.blog.logInUsername;
 
 // Finalizing actions and reducers.
-export const { turnOffSpinner, turnOnSpinner, logOutUser} = blogSlice.actions;
+export const { turnOffSpinner, turnOnSpinner, logOutUser, removeBlogPostDetails, removeBlogListPosts } = blogSlice.actions;
 export default blogSlice.reducer;
