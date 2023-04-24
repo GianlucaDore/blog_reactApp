@@ -41,6 +41,44 @@
     max-width: 10%;
 }
 
+.search_form
+{
+    display: flex;
+    flex-direction: row;
+    row-gap: 0;
+    justify-content: center;
+}
+
+.search_input
+{
+    border-top-left-radius: 3.5% 18%;
+    border-bottom-left-radius: 3.5% 18%;
+    border-style:double;
+    border-color: navy;
+}
+
+#lens_button
+{
+    cursor: pointer;
+    background-color: navy;
+    border-style: none;
+    border-top-right-radius: 23%;
+    border-bottom-right-radius: 23%;
+    
+}
+
+#lens_icon
+{
+    margin-top: 20%;
+    max-height: 25px;
+    filter: brightness(0) invert(1);
+}
+
+#add_blog
+{
+    margin-top: 2%;
+}
+
 .blog_item_preview
 {
     display: flex;

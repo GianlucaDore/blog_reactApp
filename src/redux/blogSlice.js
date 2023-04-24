@@ -147,6 +147,9 @@ export const blogSlice = createSlice({
         },
         removeBlogListPosts: (state) => {
             state.postsCollection = [];
+        },
+        purgeSearchResults: (state) => {
+            state.postsMatchingSearch = [];
         }
     },
     extraReducers: {
@@ -175,7 +178,7 @@ export const blogSlice = createSlice({
         },
         [searchAsyncPosts.fulfilled] : (state, res) => {
             console.log("Posts searched for were fetched successfully.");
-            return({...state, postsMatchingSearch : res.payload});
+            return({...state, postsMatchingSearch: res.payload});
         },
         [retrieveAsyncPost.pending] : () => {
             console.log("Promise retrieveAsyncPost is pending.");
@@ -186,7 +189,7 @@ export const blogSlice = createSlice({
         },
         [retrieveAsyncPost.fulfilled] : (state, res) => {
             console.log("Post selected was fetched successfully.");
-            return({...state, selectedPostToDisplay: res.payload[0]});
+            return({...state, isLoading: false, selectedPostToDisplay: res.payload[0]});
         },
         [loginAsyncVerification.pending] : () => {
             console.log("Promise loginAsyncVerification is pending.");
@@ -221,5 +224,5 @@ export const getSpinnerStatus = (state) => state.blog.isLoading;
 export const getLogInUsername = (state) => state.blog.logInUsername;
 
 // Finalizing actions and reducers.
-export const { turnOffSpinner, turnOnSpinner, logOutUser, removeBlogPostDetails, removeBlogListPosts } = blogSlice.actions;
+export const { turnOffSpinner, turnOnSpinner, logOutUser, removeBlogPostDetails, removeBlogListPosts, purgeSearchResults } = blogSlice.actions;
 export default blogSlice.reducer;

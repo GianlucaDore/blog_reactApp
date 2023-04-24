@@ -10,11 +10,13 @@
 
 #form_container
 {
+    margin-top: 2.7%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    row-gap: 5px;
 }
 
 .form_item
@@ -28,6 +30,28 @@
     resize: none;
     width: 100vh;
     height: 60vh;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
 }
 
+#form_container button
+{
+    margin-top: 0.7%;
+    height: 30px;
+    background-color: navy;
+    color: white;
+    border-style: double;
+    border-color: navy;
+}
+
+#form_container button:hover
+{
+    margin-top: 0.7%;
+    height: 30px;
+    cursor: pointer;
+    background-color: rgb(38, 44, 117);
+    color: white;
+    border-style: double;
+    border-color: navy;
+}
 

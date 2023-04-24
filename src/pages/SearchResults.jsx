@@ -5,7 +5,7 @@ import { BlogList } from "../components/BlogList";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
-import { getPostsMatchingSearch, getSpinnerStatus, searchAsyncPosts, turnOnSpinner } from "../redux/blogSlice";
+import { getPostsMatchingSearch, getSpinnerStatus, searchAsyncPosts, turnOnSpinner, purgeSearchResults } from "../redux/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const SearchResults = () =>
@@ -26,7 +26,9 @@ export const SearchResults = () =>
 
         dispatch(searchAsyncPosts(q)); // Dispatch the async action that asks restdb.io if there are any matching results.
 
-        // CAN WE DO CLEANUP ?
+        return () => {
+            dispatch(purgeSearchResults());
+        };
 
     }, []);  // useEffect triggers only when the SearchResults component is mounted.
 
@@ -38,7 +40,5 @@ export const SearchResults = () =>
             {!!searchResults.length ? (<><h4>Entries found:</h4><BlogList blogList={searchResults} /></>) : (!!isLoading ? (<><h4>Searching...</h4><ClipLoader color={"navy"} loading={isLoading} size={150} /></>) : (<h4>No entries found for your search!</h4>))} 
             <Footer position="stay_fixed"/>
         </div>
-        
     );
-
 }

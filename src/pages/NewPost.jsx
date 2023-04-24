@@ -74,7 +74,7 @@ export const NewPost = () =>
                 <input className="form_item" value={tags} name="tags" placeholder="Tags" onChange={e => setTags(e.target.value)} />
                 <button type="submit">Submit post</button>
             </form>
-            <Footer />
+            <Footer position="stay_fixed"/>
         </div>
         
     )

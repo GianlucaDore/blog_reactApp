@@ -6,7 +6,7 @@ import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
 import "../css/BlogPost.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogInStatus, getPostToDisplay, retrieveAsyncPost, getSpinnerStatus, removeBlogPostDetails } from "../redux/blogSlice";
+import { getLogInStatus, getPostToDisplay, retrieveAsyncPost, getSpinnerStatus, removeBlogPostDetails, turnOnSpinner } from "../redux/blogSlice";
 
 export const BlogPost = () =>
 {
@@ -24,12 +24,13 @@ export const BlogPost = () =>
 
     useEffect(() => {
 
+        dispatch(turnOnSpinner());
+
         dispatch(retrieveAsyncPost(urlParams.id));  // Dispatch the async action to retrieve the requested post's details.
 
-        return () =>
-        {
+        return () => {
             dispatch(removeBlogPostDetails());
-        }
+        };
 
     }, []);
 
