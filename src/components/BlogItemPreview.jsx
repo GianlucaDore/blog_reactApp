@@ -7,10 +7,14 @@ export const BlogItemPreview = (props) =>
 
     return (
         <div className="blog_item_preview">
-            <button onClick={() => { navigate( generatePath("/blogs/:id", { id : props.title }) ) }}>
-               <h5>{props.title}</h5>
-               <p>{props.author}</p>
-            </button>
+            <img src="props.image" alt="Blog post preview" />
+            <div className="blog_item_tags_author">
+                <h6>{props.tags}</h6>
+                <h6>{props.author}</h6>
+            </div>
+            <h1>{props.title}</h1>
+            <p>{props.summary}</p>
+            <button className="read_full_blog_post_button" onClick={() => { navigate( generatePath("/blogs/:id", { id : props.title }) ) }}>Read full article</button>
         </div>
     );
 }

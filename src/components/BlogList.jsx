@@ -9,7 +9,7 @@ export const BlogList = (props) =>
     else
     {
         const blogItems = props.blogList.map((o) => {
-            return (<BlogItemPreview title={o.title} author={o.author} key={o.title} />);
+            return (<BlogItemPreview title={o.title} summary={o.summary} author={o.author} tags={o.tags} key={o.title} />);
         } );
 
         return (
@@ -18,5 +18,4 @@ export const BlogList = (props) =>
             </div>
         );
     }
-   
 }

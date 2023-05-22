@@ -23,3 +23,32 @@
     font-family: 'Caveat', cursive;
 }
 
+
+@media screen and (max-width: 429px)
+{
+    #homepage_header_container
+    {
+        display: flex;
+        flex: content;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0%;
+        row-gap: 0px;
+    }
+
+    #header_welcome
+    {
+        margin-bottom: 4px;
+        color: navy;
+    }
+
+    #header_title
+    {
+        margin-top: 0%;
+        color: navy;
+        font-family: 'Caveat', cursive;
+    }
+}

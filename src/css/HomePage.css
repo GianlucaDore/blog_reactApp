@@ -5,9 +5,11 @@
 
 #home_page_blog_list
 {
-    flex: content;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .recent_submitted_posts
@@ -21,24 +23,55 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3%;
+    column-gap: 5%;
+    row-gap: 15px;
 }
 
-/* #add_blog
+#add_blog
 {
-    background-color: aqua;
-} */
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
 
 #plus_button
 {
+    color: black;
+    border-color: darkblue;
+    cursor: pointer;
+    margin: 0%;
+    width: 30%;
+    max-width: 165px;
     cursor: pointer;
     background-color: transparent;
+    padding: 0px 0px;
+}
+
+#plus_button:hover
+{
+    background-color: rgba(0, 0, 128, 0.8);
+    margin: 0%;
+    width: 30%;
+    max-width: 165px;
+    cursor: pointer;
+    padding: 0px 0px;
+    transition: all 0.2s;
+    color: whitesmoke;
+}
+
+#plus_button:hover > img
+{
+    filter: invert(100%);
+    max-width: 10px;
+    margin-top: 10%;
+    max-width: 20%;
 }
 
 #plus_icon
 {
-    margin-top: 2%;
-    max-width: 10%;
+    max-width: 10px;
+    margin-top: 10%;
+    max-width: 20%;
 }
 
 .search_form
@@ -67,6 +100,15 @@
     
 }
 
+#lens_button:hover
+{
+    cursor: pointer;
+    background-color: rgba(0, 0, 128, 0.70);
+    border-style: none;
+    border-top-right-radius: 23%;
+    border-bottom-right-radius: 23%;
+}
+
 #lens_icon
 {
     margin-top: 20%;
@@ -74,36 +116,127 @@
     filter: brightness(0) invert(1);
 }
 
-#add_blog
+.blog_item_tags_author
 {
-    margin-top: 2%;
+    border-style: ridge;
 }
 
 .blog_item_preview
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1%;
+    max-width: 30%;
+    border-style:groove;
+    border-radius: 5%;
 }
 
 .blog_item_preview > button  /* Rules for the buttons that are direct descendants of the div with given className */
 {
-    width: 150px;
+    align-self: center;
+    max-width: 150px;
     background-color: whitesmoke;
     border: double;
     border-radius: 6%;
     border-color: navy;
     color: darkblue;
+    
 }
 
 .blog_item_preview > button:hover
 {
-    width: 150px;
+    cursor: pointer;
+    align-self: center;
+    max-width: 150px;
     background-color: navy;
     border: double;
     border-radius: 6%;
     border-color: white;
     color: white;
+}
+
+.blog_item_preview h6
+{
+    float: left;
+    margin-left: 5px;
+    margin-block-start: 0.7em;
+    margin-block-end: 0.7em;
+}
+
+.blog_item_preview h1
+{
+    margin-block-start: 0.1em;
+    margin-block-end: 0em;
+}
+
+@media screen and (max-width: 699px)
+{
+
+    #add_blog
+    {
+        margin-top: 5%;
+        margin-bottom: 0%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #home_page_blog_list
+    {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    #blog_item_container
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        column-gap: 0px;
+        margin-bottom: 15px;
+    }
+
+    .blog_item_preview
+    {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1%;
+        max-width: 80%;
+        border-style: groove;
+        border-radius: 5%;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    #blog_item_container
+    {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 4.5%;
+        row-gap: 20px;
+    }
+
+    .blog_item_preview
+    {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1%;
+        width: 20%;
+        border-style:groove;
+        border-radius: 5%;
+    }
 }

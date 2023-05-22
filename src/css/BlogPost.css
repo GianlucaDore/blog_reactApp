@@ -1,17 +1,25 @@
-#blogpost
+#blog_post
 {
     text-align: center;
 }
 
-#blog_post_title
+.blog_post_title
 {
     color: crimson;
 
 }
 
+.blog_post_body
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vw;
+}
+
 #delete_blog_post
 {
     display: inline-block;
+    cursor: pointer;
     padding: 0.3em 1.2em;
     margin: 0 0.1em 0.1em 0;
     border: 0.16em solid rgba(255,255,255,0);
@@ -30,14 +38,33 @@
 {
     border-color: red;
     text-shadow: none;
-    
 }
 
 @media all and (max-width:30em)
 {
     #delete_blog_post
     {
-     display:block;
-     margin:0.2em auto;
+        display: block;
+        margin: 0.2em auto;
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .blog_post_body
+    {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90vw;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1099px)
+{
+    .blog_post_body
+    {
+        margin-left: auto;
+        margin-right: auto;
+        width: 82vw;
     }
 }

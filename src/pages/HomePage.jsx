@@ -4,7 +4,6 @@ import { AddBlog } from "../components/AddBlog";
 import { BlogList } from "../components/BlogList";
 import { SearchBar } from "../components/SearchBar";
 import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
 import { NavBar } from '../components/NavBar';
 import '../css/HomePage.css';
 import { ClipLoader } from 'react-spinners';
@@ -45,8 +44,6 @@ export const HomePage = () =>
                 <ClipLoader color={"navy"} loading={isLoading} size={150} />
                 <BlogList blogList={postsCollectionData} />
             </div>
-            <Footer position="stay_fixed"/>
         </div>
     );
-
-}
+};

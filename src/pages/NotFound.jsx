@@ -10,4 +10,4 @@ export const NotFound = () =>
             <p id="p_not_found">The page you requested was not found on this server.</p>
         </div>
     )
-}
+};

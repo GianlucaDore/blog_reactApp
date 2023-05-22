@@ -1,0 +1,43 @@
+#logout_container
+{
+    width: 20%;
+    min-width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 2%;
+    margin-top: 5%;
+    padding-left: 7px;
+    padding-bottom: 7px;
+    border-style: ridge;
+    border-color: rgba(0, 0, 50, 0.7);
+}
+
+#logout_container > h3
+{
+    height: 1px;
+    margin-top: 5px;
+}
+
+#logout_container > p
+{
+    margin-bottom: 9px;
+}
+
+#logout_container button
+{
+    width: 20%;
+    background-color: navy;
+    color: white;
+    border-style: double;
+    border-color: navy;
+}
+
+#logout_container button:hover
+{
+    background-color: rgb(38, 44, 117);
+    cursor: pointer;
+    color: white;
+    border-style: double;
+    border-color: navy;
+}

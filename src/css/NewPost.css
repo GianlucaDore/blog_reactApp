@@ -24,12 +24,17 @@
     width: 20%;
 }
 
+.form_summary
+{
+    width: 65vw;
+}
+
 #form_textarea
 {
     flex-grow: 4;
     resize: none;
-    width: 100vh;
-    height: 60vh;
+    width: 85vw;
+    height: 61vh;
     font-family: 'Times New Roman', Times, serif;
     font-size: 17px;
 }
@@ -54,4 +59,3 @@
     border-style: double;
     border-color: navy;
 }
-

@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { ClipLoader } from 'react-spinners';
 import "../css/BlogPost.css";
@@ -32,7 +31,7 @@ export const BlogPost = () =>
             dispatch(removeBlogPostDetails());
         };
 
-    }, []);
+    }, [dispatch, urlParams.id]);
 
 
     /* The API used to DELETE the post should be called in the event handler of the onClick event of the button .
@@ -40,14 +39,17 @@ export const BlogPost = () =>
        since the API call is not supposed to be called when the state changes, but on user-action (event).    
        So, we'll handle the deletion directly in the even handler. */
     return(
-        <div id="blogpost">
+        <div id="blog_post">
             <NavBar />
-            {!!isLoading ? (<ClipLoader color={"navy"} loading={isLoading} size={150} /> ) : null}
-            {!!blogData.title ? <h1 id="blog_post_title">{blogData.title}</h1> : null}
-            {!!blogData.content ? <p id="blog_post_content">{blogData.content}</p> : null}
-            {!!blogData.tags ? <h5 id="blog_post_tags">{blogData.tags}</h5> : null}
-            {(!isLoading && userIsLoggedIn) ? (<button id="delete_blog_post" onClick={() => {const ret = handleDeletion(blogData); if (ret === 404) {navigate("/notfound")} else {navigate("/")}} }>Delete this post</button>) : null }
-            <Footer position="stay_sticky"/>
+            <div className="blog_post_body">
+                {!!isLoading ? (<ClipLoader color={"navy"} loading={isLoading} size={150} /> ) : null}
+                {!!blogData.title ? <h1 className="blog_post_title">{blogData.title}</h1> : null}
+                {!!blogData.summary ? <p className="blog_post_title">{blogData.summary}</p> : null}
+                {!!blogData.content ? <p className="blog_post_content">{blogData.content}</p> : null}
+                {!!blogData.author ? <h5 className="blog_post_tags">{blogData.author}</h5> : null}
+                {!!blogData.tags ? <h5 className="blog_post_tags">{blogData.tags}</h5> : null}
+                {(!isLoading && userIsLoggedIn) ? (<button id="delete_blog_post" onClick={() => {const ret = handleDeletion(blogData); if (ret === 404) {navigate("/notfound")} else {navigate("/")}} }>Delete this post</button>) : null }
+            </div>
         </div> 
     );  // We render the delete post button only if an admin is currently logged in.
 }
@@ -87,4 +89,4 @@ async function handleDeletion(blogData)  // This is the function called by the e
         else
             return 200;
     }
-}
+};

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import '../css/Login.css';
 import { loginAsyncVerification, getLogInStatus } from "../redux/blogSlice";
@@ -17,8 +16,8 @@ export const Login = () =>
 
     const navigate = useNavigate();
 
-    useEffect(() =>
-    {
+    useEffect(() => {
+        
         if (userIsLoggedIn === true)
             navigate("/");
     }, [userIsLoggedIn, navigate]); // Automatic redirect to homepage when user logs in.
@@ -34,7 +33,6 @@ export const Login = () =>
                     <button type="submit">OK</button>
                 </form>
             </div>
-            <Footer position="stay_fixed" />
         </div>
     );
 };
