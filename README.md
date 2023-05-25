@@ -42,7 +42,7 @@ Example of responsiveness on iPhone XR's resolution:
 ![reactblog_iphone_XR](https://github.com/GianlucaDore/blog_reactApp/assets/51960987/48f70f99-4b82-45e7-82a1-47c55f9133ea)
 
 
-#Future improvements
+# Future improvements
 
 Future improvements will include:
 
