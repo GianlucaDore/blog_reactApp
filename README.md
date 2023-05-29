@@ -52,6 +52,8 @@ Future improvements will include:
 
 - A "correct" and up-to-today's-standard authentication system. For now, the login happens by querying the DB with some credentials; if the DB finds both fields in a Administrators' table row, it returns a 200 ok HTTP response, with the row requested. This of course opens to big security problems, but it will be taken care by future updates, probably with the help of tokens and localSessionStore browser variable. For now, the authentication happens by querying restdb.io's admin table of the application; the API makes a GET request that should match both the username and the associated password on the database. If there is a match between user AND ( V ) password on the DB, the database fulfills the GET request, returning the credential details as a single result in the GET response. If there is not a match for the credentials provided, the server's response will be empty.
 
+- The complete migration to Redux of the asynchronous code, as asynchronous thunks, contained in the NewPost and BlogPost components. For now, the asynchonous logic of those two components is left in the UI.
+
 
 # Setting up the app for use
 
