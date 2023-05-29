@@ -13,7 +13,7 @@ export const Profile = () =>
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => {  // Prevents unexpected behaviour if user manually types in this component's URL without being logged in.
 
         if (isLoggedIn === false)
         {
@@ -29,7 +29,7 @@ export const Profile = () =>
             {(isLoggedIn) ? (<div id="logout_container">
                 <h3>Log Out</h3>
                 <p>Are you sure you want to log out?</p>
-                <button onClick={() => {dispatch(logOutUser()); alert("Log Out was successful.");}}>OK</button>
+                <button onClick={() => {dispatch(logOutUser()); alert("Log out was successful."); navigate("/");}}>OK</button>
             </div>) : (<p>No users logged in at the moment.</p>)}
         </div>
     )

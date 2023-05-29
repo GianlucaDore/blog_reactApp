@@ -14,7 +14,7 @@
 
 .recent_submitted_posts
 {
-    margin-top: 3.1%;
+    margin-top: 1%;
 }
 
 #blog_item_container
@@ -29,7 +29,7 @@
 
 #add_blog
 {
-    margin-top: 2%;
+    margin-top: 1%;
     display: flex;
     justify-content: center;
 }

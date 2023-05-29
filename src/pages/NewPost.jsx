@@ -40,20 +40,28 @@ export const NewPost = () =>
             {
                 let obj = {}
                 formData.forEach((value, key) => {obj[key] = value;});
-                //var jsonToSend = JSON.stringify(obj);
+                var jsonToSend = JSON.stringify(obj);
 
                 console.log("obj = " + obj);
-                //console.log("jsonToSend = " + jsonToSend);
+                console.log("jsonToSend = " + jsonToSend);
 
-                fetch('https://reactblogapp-52d2.restdb.io/rest/excel-blog', {
+                const response = await fetch('https://reactblogapp-52d2.restdb.io/rest/excel-blog', {
                     "method" : 'POST',
                     "headers" : {
                                     'Cache-Control' : "no-cache",
                                     'x-apikey': '63d53b073bc6b255ed0c43c2',
-                                    'content-type': 'application/json'
+                                    'content-type' : 'application/json'
                                 },
-                    "body" : obj                           
+                    "body" : jsonToSend                      
                 });
+
+                const jsonData = await response.json();
+                console.log(jsonData);
+            }
+
+            for (const [key, valuee] of formData)
+            {
+                console.log(key + " : " + valuee);
             }
 
             postData().catch((error) => (console.log("There was an error: " + error)));
